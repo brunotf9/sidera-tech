@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidera Tech — Software Development</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #08090f;
+        --bg-card: #0e1020;
+        --bg-card2: #111428;
+        --border: rgba(110, 105, 220, 0.18);
+        --border-hi: rgba(110, 105, 220, 0.42);
+        --indigo: #6b68e0;
+        --indigo-lt: #8b88f0;
+        --indigo-dim: #3d3b9e;
+        --violet: #8060d8;
+        --text: #e8e7f6;
+        --muted: #7e7d9e;
+        --faint: #3a3960;
+        --mono: "DM Mono", monospace;
+        --display: "Syne", sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--display);
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 4rem;
+        background: rgba(8, 9, 15, 0.72);
+        backdrop-filter: blur(14px);
+        border-bottom: 0.5px solid var(--border);
+      }
+
+      .logo {
+        font-family: var(--display);
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--text);
+        text-decoration: none;
+      }
+      .logo span {
+        color: var(--indigo-lt);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2.5rem;
+      }
+      nav ul a {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        color: var(--muted);
+        text-decoration: none;
+        letter-spacing: 0.06em;
+        transition: color 0.2s;
+      }
+      nav ul a:hover {
+        color: var(--indigo-lt);
+      }
+
+      .nav-cta {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        color: var(--indigo-lt);
+        border: 0.5px solid var(--border-hi);
+        padding: 0.5rem 1.2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .nav-cta:hover {
+        background: var(--indigo-dim);
+        color: #fff;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 10rem 4rem 6rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -30%;
+        right: -15%;
+        width: 70vw;
+        height: 70vw;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(107, 104, 224, 0.13) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -10%;
+        left: 20%;
+        width: 40vw;
+        height: 40vw;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(128, 96, 216, 0.08) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .hero-label {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        color: var(--indigo-lt);
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .hero-label::before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 1px;
+        background: var(--indigo);
+      }
+
+      h1 {
+        font-family: var(--display);
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        max-width: 14ch;
+        margin-bottom: 1.75rem;
+      }
+      h1 em {
+        font-style: normal;
+        color: var(--indigo-lt);
+      }
+
+      .hero-sub {
+        font-family: var(--display);
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: var(--muted);
+        max-width: 46ch;
+        margin-bottom: 3rem;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: var(--indigo);
+        color: #fff;
+        padding: 0.85rem 2.2rem;
+        border-radius: 5px;
+        font-family: var(--mono);
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-primary:hover {
+        background: var(--indigo-lt);
+        transform: translateY(-1px);
+      }
+
+      .btn-ghost {
+        color: var(--muted);
+        padding: 0.85rem 2rem;
+        border-radius: 5px;
+        font-family: var(--mono);
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        border: 0.5px solid var(--border);
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .btn-ghost:hover {
+        border-color: var(--border-hi);
+        color: var(--text);
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 3.5rem;
+        margin-top: 5rem;
+        padding-top: 2rem;
+        border-top: 0.5px solid var(--border);
+      }
+      .stat-num {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--indigo-lt);
+        line-height: 1;
+      }
+      .stat-label {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        margin-top: 0.35rem;
+      }
+
+      /* ── SECTION BASE ── */
+      section {
+        padding: 7rem 4rem;
+      }
+      .section-tag {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        color: var(--indigo);
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+      }
+      .section-intro {
+        color: var(--muted);
+        font-size: 1rem;
+        max-width: 52ch;
+        line-height: 1.75;
+        margin-bottom: 4rem;
+      }
+
+      /* ── SERVICES ── */
+      #services {
+        background: var(--bg-card);
+        border-top: 0.5px solid var(--border);
+        border-bottom: 0.5px solid var(--border);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5px;
+        background: var(--border);
+        border: 0.5px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .service-card {
+        background: var(--bg-card2);
+        padding: 2.5rem 2rem;
+        transition: background 0.2s;
+      }
+      .service-card:hover {
+        background: #151830;
+      }
+
+      .service-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: rgba(107, 104, 224, 0.12);
+        border: 0.5px solid var(--border-hi);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+      .service-icon svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--indigo-lt);
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .service-card h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.65rem;
+        color: var(--text);
+      }
+      .service-card p {
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .service-tag {
+        display: inline-block;
+        margin-top: 1.25rem;
+        font-family: var(--mono);
+        font-size: 0.67rem;
+        letter-spacing: 0.12em;
+        color: var(--indigo);
+        border: 0.5px solid var(--indigo-dim);
+        padding: 0.25rem 0.65rem;
+        border-radius: 3px;
+      }
+
+      /* ── CONTACT ── */
+      #contact {
+        background: var(--bg-card);
+        border-top: 0.5px solid var(--border);
+        text-align: center;
+      }
+      #contact h2 {
+        margin-bottom: 1rem;
+      }
+      #contact .section-intro {
+        margin: 0 auto 2.5rem;
+      }
+      .contact-email-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: var(--indigo);
+        color: #fff;
+        padding: 1rem 2.4rem;
+        border-radius: 5px;
+        font-family: var(--mono);
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .contact-email-btn:hover {
+        background: var(--indigo-lt);
+        transform: translateY(-1px);
+      }
+      .contact-email-btn svg {
+        width: 15px;
+        height: 15px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        padding: 2.5rem 4rem;
+        border-top: 0.5px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        color: var(--faint);
+      }
+      footer a {
+        color: var(--faint);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      footer a:hover {
+        color: var(--muted);
+      }
+
+      /* ── GRID BG TEXTURE ── */
+      .grid-bg {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background-image:
+          linear-gradient(rgba(107, 104, 224, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(107, 104, 224, 0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(
+          ellipse 80% 70% at 50% 0%,
+          black 30%,
+          transparent 100%
+        );
+      }
+      .hero > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 860px) {
+        nav {
+          padding: 1rem 1.5rem;
+        }
+        nav ul {
+          display: none;
+        }
+        .hero {
+          padding: 8rem 1.5rem 5rem;
+        }
+        section {
+          padding: 5rem 1.5rem;
+        }
+        footer {
+          flex-direction: column;
+          gap: 0.75rem;
+          text-align: center;
+        }
+        .hero-stats {
+          gap: 2rem;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a href="#" class="logo">SIDERA<span>.</span>TECH</a>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Start a project</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="grid-bg"></div>
+      <p class="hero-label">ConteFi</p>
+    </section>
+  </body>
+</html>
