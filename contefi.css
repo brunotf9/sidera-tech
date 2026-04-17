@@ -1,0 +1,133 @@
+@import "theme.css";
+
+.contefi-hero {
+  flex-direction: row;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.benefits-list {
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ── INSTALLATION GUIDE ── */
+#instalacion {
+  background: var(--bg-card);
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.install-browsers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.install-card {
+  background: var(--bg-card2);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+}
+
+.install-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.install-card h3 svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--indigo-lt);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.install-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.install-steps li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.step-num {
+  font-family: var(--mono);
+  font-size: 1.2rem;
+  color: var(--indigo-lt);
+  background: rgba(107, 104, 224, 0.12);
+  border: 0.5px solid var(--border-hi);
+  border-radius: 3px;
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.step-text {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.step-text strong {
+  color: var(--violet);
+  font-weight: 500;
+}
+
+.img-container {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  background: rgba(107, 104, 224, 0.06);
+  border: 0.5px dashed var(--border-hi);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.img-container span {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--indigo-lt);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.tutorial-img {
+  object-fit: contain;
+  width: 100%;
+}
